@@ -1,0 +1,3 @@
+<h2>Tus posts</h2>
+<app-unique-post [userId]="this.userId" [posts] = "postsPersonales" *ngIf = "postsPersonales"></app-unique-post>
+<button *ngIf="userId" (click)="crearPost()">CREAR POST</button>

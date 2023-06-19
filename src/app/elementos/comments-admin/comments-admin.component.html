@@ -1,0 +1,9 @@
+<div *ngFor = "let comment of datosRecuperados" class="comment">
+    <h4>{{comment.fecha}}</h4>
+    <div class="content">
+        <p>{{comment.contenido}}</p>
+    </div>
+    <!-- <h1>{{comment.id}}</h1> -->
+    <button (click)="eliminarComment(comment.id)">Eliminar Commentario</button>
+    <!-- <button (click)="eliminarPost(post.id)">ELIMINAR POST</button> -->
+</div>

@@ -1,0 +1,11 @@
+<div *ngFor = "let comment of datosRecuperados" class="comment">
+    <h4>{{comment.fecha}}</h4>
+    <div class="content">
+        <p>{{comment.contenido}}</p>
+    </div>
+
+    <div class="like-section">
+        <p>Likes:{{comment.likes}}</p>
+        <p>Dislikes:{{comment.dislikes}}</p>
+    </div>
+</div>

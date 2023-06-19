@@ -1,0 +1,34 @@
+<div class="user-info">
+  <div class=user-field>
+    <div class="data">
+      <h3>Username</h3>
+      <h4>{{userData.username}}</h4>
+    </div>
+  </div>
+  
+  <div class=user-field>
+    <div class="data">
+      <h3>Nombre</h3>
+      <h4>{{userData.nombre}}</h4>
+    </div>
+  </div>
+
+  <div class=user-field>
+    <div class="data">
+      <h3>Apellido</h3>
+      <h4>{{userData.apellido}}</h4>
+    </div>
+  </div>
+
+  <div class=user-field>
+    <div class="data">
+      <h3>Contraseña</h3>
+      <h4>{{userData.password}}</h4>
+    </div>
+  </div>
+
+
+  <div class="update-user">
+    <button (click)="updateUser(userData.id)">Actualizar cuenta</button>
+  </div>
+</div>
