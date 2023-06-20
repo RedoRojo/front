@@ -18,7 +18,11 @@ export class UniquePostAdminComponent {
       (data) =>
       {
         console.log(data);
-        location.reload();
+        this.datosPostsService.obtenerPosts().subscribe(
+          (data)=>this.posts=data,
+          (error)=>console.log(error),
+          ()=>console.log('FIN')
+        )
       },
       
       (error) => console.log('Error al eliminar el post:', error),

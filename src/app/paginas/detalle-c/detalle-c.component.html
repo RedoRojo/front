@@ -1,1 +1,4 @@
-<app-formulario-reactivo-post [postId] = "postId"></app-formulario-reactivo-post>
+<app-formulario-reactivo-comment [postId] = "postId" [pagina]="pagina"></app-formulario-reactivo-comment>
+<!-- <button onclick="volverAtras()">Volver atras</button> -->
+<a *ngIf="pagina==1" [routerLink]="['/posts']">Volver atras</a>
+<a *ngIf="pagina==2" [routerLink]="['/misPosts']">Volver atras</a>

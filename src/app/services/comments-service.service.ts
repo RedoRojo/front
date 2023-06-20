@@ -18,4 +18,8 @@ export class CommentsService {
     // console.log(commentId)
     return this.http.delete('http://localhost:3000/comments/' + commentId.toString())
   }
+  modificarComment(commentId:number,formulario:any)
+  {
+    return this.http.put('http://localhost:3000/comments/'+commentId.toString(),formulario)
+  }
 }

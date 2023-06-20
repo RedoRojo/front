@@ -1,19 +1,27 @@
-<div class="post" *ngFor = "let post of posts">
-    <div class="post-info">
-        <h3>{{post.user.nombre}}</h3>
-        <h4>{{post.fecha}}</h4>
+<div class="post" *ngFor="let post of posts" [id]="'p' + post.id" [ngClass]="{ 'highlight': post.id == highlightedPostId }">
+    
+    <h4>PostId es {{post.id}} y es del tipo {{ getVariableType(post.id) }}</h4>
+    <h4>LastPId es {{lastPId}} y es del tipo {{ getVariableType(lastPId) }}</h4>
+    <div class="post-info"> 
+      <h3>{{ post.user.nombre }}</h3>
+      
+      <h4>{{ post.fecha }}</h4>
+      
     </div>
     <div class="post-titulo">
-        <h2>{{post.titulo}}</h2>
-    </div> 
-    <div class="post-body">
-        <p>{{post.contenido}}</p>
+      <h2>{{ post.titulo }}</h2>
     </div>
-
+    <div class="post-body">
+      <p>{{ post.contenido }}</p>
+    </div>
+  
     <h3>Comentarios</h3>
-
-    <app-comments-for-post [postId] = post.id></app-comments-for-post>
-    <button (click)="verDetalleDeComentario(post.id)">Aniadir comentario</button>
+  
+    <app-comments-for-post [postId]="post.id"></app-comments-for-post>
+    <button (click)="verDetalleDeComentario(post.id)">Añadir comentario</button>
     <button *ngIf="userId" (click)="eliminarPost(post.id)">ELIMINAR POST</button>
     <button *ngIf="userId" (click)="verDetalleDePost(post.id)">MODIFICAR POST</button>
-</div>
+  </div>
+
+
+  

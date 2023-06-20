@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { PostsService } from 'src/app/services/posts-service.service';
 
@@ -12,8 +12,9 @@ export class PostsComponent implements OnInit{
 
   datosRecuperados: any;
   userId: number;
+  lastPId:any;
   
-  constructor( private datosPostsService:PostsService,private router: Router){
+  constructor( private datosPostsService:PostsService,private router: Router,private route2: ActivatedRoute){
     this.userId =2; 
   }
   ngOnInit(): void {
@@ -22,5 +23,14 @@ export class PostsComponent implements OnInit{
       (error)=>console.log(error),
       ()=>console.log('FIN')
     )
+    this.route2.queryParams.subscribe(params => {
+      const lastPublicationId = params['id'];
+      console.log(lastPublicationId)
+      
+      if (lastPublicationId) {
+        this.lastPId=lastPublicationId;
+        // this.lastPId=91;
+      }
+    });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommentsService } from 'src/app/services/comments-service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CommentsService } from 'src/app/services/comments-service.service';
 export class CommentsAdminComponent {
   @Input() postId: any; 
   datosRecuperados: any;
-  constructor( private datosCommentsService: CommentsService){}
+  constructor( private datosCommentsService: CommentsService,private router:Router){}
   ngOnInit(): void {
 
     this.datosCommentsService.obtenerComentariosForPost(this.postId).subscribe(
@@ -25,12 +26,20 @@ export class CommentsAdminComponent {
       (data) =>
       {
         console.log(data);
-        location.reload();
+        this.datosCommentsService.obtenerComentariosForPost(this.postId).subscribe(
+          (data)=>this.datosRecuperados=data,
+          (error)=>console.log(error),
+          ()=>console.log('FIN')
+        )
       },
       
       (error) => console.log('Error al eliminar el comment:', error),
       () => console.log('FIN')
     );
   }
+  // verDetalleDeComentario(commentId:number)
+  // {
+  //   this.router.navigate(['/detalleComment', this.postId,commentId]);
+  // }
   
 }

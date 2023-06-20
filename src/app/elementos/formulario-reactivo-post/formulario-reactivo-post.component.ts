@@ -15,6 +15,7 @@ export class FormularioReactivoPostComponent {
   postAuxiliar: any;
   formulario: any;
   aniadirComentario:boolean=false;
+  
   constructor(private datosPostsService: PostsService, private router: Router,private datosCommentsService: CommentsService) {}
 
   ngOnInit(): void {
@@ -64,29 +65,7 @@ export class FormularioReactivoPostComponent {
         fecha: new FormControl(fechaFormateada)
       });
     }
-    if(this.postId !== 0 && this.userId === undefined)
-    {
-      
-      const fechaActual: Date = new Date();
-      const anio: number = fechaActual.getUTCFullYear();
-      const mes: number = fechaActual.getUTCMonth() + 1; // Los meses comienzan desde 0, se suma 1 para obtener el número correcto
-      const dia: number = fechaActual.getUTCDate();
-      const horas: number = fechaActual.getUTCHours();
-      const minutos: number = fechaActual.getUTCMinutes();
-      const segundos: number = fechaActual.getUTCSeconds();
-
-      const fechaFormateada: string = `${anio}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}T${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}Z`;
-
-      console.log(fechaFormateada);
-      this.formulario = new FormGroup({
-      
-        contenido: new FormControl('', Validators.required),
-        post: new FormControl(this.postId),
-        fecha: new FormControl(fechaFormateada),
-        likes: new FormControl(0),
-        dislikes: new FormControl(0)
-      });
-    }
+    
   }
   inicializarFormulario()
   {
@@ -102,7 +81,9 @@ export class FormularioReactivoPostComponent {
       
       this.datosPostsService.modificarPost(this.postId,this.formulario.value).subscribe((respuesta: any) => {
         console.log(respuesta);
-        this.router.navigate(['/misPosts']);
+        
+        const postIdModificado = respuesta.id;
+        this.router.navigate(['/misPosts'], { queryParams: { id: postIdModificado } });
       });
       
       
@@ -115,7 +96,9 @@ export class FormularioReactivoPostComponent {
       
       this.datosPostsService.crearPost(this.formulario.value).subscribe((respuesta: any) => {
         console.log(respuesta);
-        this.router.navigate(['/misPosts']);
+        const nuevoPostId = respuesta.id;
+        this.router.navigate(['/misPosts'], { queryParams: { id: nuevoPostId } });
+        // this.router.navigate(['/misPosts']);
       });
       
   

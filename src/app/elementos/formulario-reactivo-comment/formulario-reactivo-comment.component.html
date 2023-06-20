@@ -1,0 +1,30 @@
+<form class="form" [formGroup]="formulario" (ngSubmit)="crearComentario()">
+    <label for="contenido">Contenido</label>
+    <input type="text" id="contenido" formControlName="contenido">
+    <ng-container *ngIf="false">
+        <input type="text" id="post" formControlName="post">
+    </ng-container>
+    <ng-container *ngIf="false">
+        <input type="text" id="fecha" formControlName="fecha">
+    </ng-container>
+    <ng-container *ngIf="false">
+        <input type="text" id="likes" formControlName="likes">
+    </ng-container>
+    <ng-container *ngIf="false">
+        <input type="text" id="dislikes" formControlName="dislikes">
+    </ng-container>
+    <button type="submit">Enviar</button>
+</form>
+
+<!-- <form class="form"  *ngIf="pagina==undefined" [formGroup]="formulario" (ngSubmit)="modificarComentario()">
+    
+  
+    <label for="contenido">Contenido</label>
+    <input type="text" id="contenido" formControlName="contenido">
+  
+    
+    <button type="submit">Enviar</button>
+</form> -->
+
+
+
