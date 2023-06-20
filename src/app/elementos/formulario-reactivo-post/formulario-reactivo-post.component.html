@@ -25,23 +25,7 @@
     <button type="submit">Enviar</button>
 </form>
 
-<form class="form" *ngIf="this.postId !== 0 && this.userId === undefined" [formGroup]="formulario" (ngSubmit)="crearComentario()">
-    <label for="contenido">Contenido</label>
-    <input type="text" id="contenido" formControlName="contenido">
-    <ng-container *ngIf="false">
-        <input type="text" id="post" formControlName="post">
-    </ng-container>
-    <ng-container *ngIf="false">
-        <input type="text" id="fecha" formControlName="fecha">
-    </ng-container>
-    <ng-container *ngIf="false">
-        <input type="text" id="likes" formControlName="likes">
-    </ng-container>
-    <ng-container *ngIf="false">
-        <input type="text" id="dislikes" formControlName="dislikes">
-    </ng-container>
-    <button type="submit">Enviar</button>
-</form>
+
 <!-- En este caso, he envuelto el campo de entrada userId en un contenedor <ng-container> y he utilizado la directiva *ngIf para evaluar 
     una condición falsa (false). Esto hará que el campo de entrada se excluya del DOM y no se renderice en la página, pero 
     aún conservará su valor en el modelo de formulario.

@@ -33,7 +33,7 @@ const routes: Routes = [
     path: "misPosts", component: MisPostsComponent
   },
   {
-    path:"detalleComment/:id", component: DetalleCComponent
+    path:"detalleComment/:id/:idDos", component: DetalleCComponent
   },
   {
     path:"cuenta", component: MyAccountComponent

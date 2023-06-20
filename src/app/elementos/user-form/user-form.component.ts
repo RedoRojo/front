@@ -55,12 +55,16 @@ export class UserFormComponent {
       if(this.userId !== '-1'){
         this.datosUsersService.modificarUser(this.userId, this.formulario.value).subscribe((respuesta: any) => {
           console.log(Response); 
-          this.router.navigate(['/cuenta'])
+          console.log(respuesta);
+          const modifiedUserId = respuesta.id;
+          this.router.navigate(['/admin/users'],{ queryParams: { id: modifiedUserId } })
         });
       }else {
         this.datosUsersService.createUser(this.formulario.value).subscribe((respuesta: any) => {
           console.log(Response); 
-          this.router.navigate(['/admin/users'])
+          console.log(respuesta);
+          const nuevoUserId = respuesta.id;
+          this.router.navigate(['/admin/users'],{ queryParams: { id: nuevoUserId } })
         });
       }
       
