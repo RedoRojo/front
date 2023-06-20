@@ -20,7 +20,13 @@ import { UniquePostAdminComponent } from './elementos/unique-post-admin/unique-p
 import { CommentsAdminComponent } from './elementos/comments-admin/comments-admin.component';
 import { AdminUsersComponent } from './paginas/admin-users/admin-users.component';
 import { UserFormComponent } from './elementos/user-form/user-form.component';
+
 import { FormularioReactivoCommentComponent } from './elementos/formulario-reactivo-comment/formulario-reactivo-comment.component';
+
+import { LoginComponent } from './paginas/login/login.component';
+import { RegisterComponent } from './paginas/register/register.component';
+import { LoginFormComponent } from './elementos/login-form/login-form.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +47,13 @@ import { FormularioReactivoCommentComponent } from './elementos/formulario-react
     CommentsAdminComponent,
     AdminUsersComponent,
     UserFormComponent,
-    FormularioReactivoCommentComponent
+
+    FormularioReactivoCommentComponent,
+
+    LoginComponent,
+    RegisterComponent,
+    LoginFormComponent
+
   ],
   imports: [
     BrowserModule,
