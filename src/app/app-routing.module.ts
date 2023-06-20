@@ -10,8 +10,10 @@ import { DetalleUserComponent } from './paginas/detalle-user/detalle-user.compon
 import { AdminPostsComponent } from './paginas/admin-posts/admin-posts.component';
 import { AdminUsersComponent } from './paginas/admin-users/admin-users.component';
 import { UserFormComponent } from './elementos/user-form/user-form.component';
+import { LoginComponent } from './paginas/login/login.component';
 
 const routes: Routes = [
+  {path:"", component: PostsComponent},
   {
     path: "posts", component: PostsComponent
   },
@@ -38,6 +40,9 @@ const routes: Routes = [
   }, 
   {
     path:"admin/users", component: AdminUsersComponent
+  },
+  {
+    path:"login", component: LoginComponent
   }
 ];
 
