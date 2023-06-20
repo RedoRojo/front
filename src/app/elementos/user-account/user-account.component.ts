@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-account',
@@ -8,12 +9,16 @@ import { Router } from '@angular/router';
 })
 export class UserAccountComponent {
   
-  constructor(private router: Router ){}
+  constructor(private router: Router, public datosAuthService: AuthService){}
 
   @Input() userData: any; 
 
   updateUser(userId:number) {
     this.router.navigate(['/detalleUser', userId])
+  }
+  
+  logout(){ 
+    this.datosAuthService.logout(); 
   }
 
 }

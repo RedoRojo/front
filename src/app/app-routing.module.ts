@@ -11,6 +11,7 @@ import { AdminPostsComponent } from './paginas/admin-posts/admin-posts.component
 import { AdminUsersComponent } from './paginas/admin-users/admin-users.component';
 import { UserFormComponent } from './elementos/user-form/user-form.component';
 import { LoginComponent } from './paginas/login/login.component';
+import { AuthGuard } from './helpers/auth.guard';
 
 const routes: Routes = [
   {path:"", component: PostsComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
     path: "posts", component: PostsComponent
   },
   {
-    path:"detallePost/:id/:idDos", component: DetallePComponent
+    path:"detallePost/:id/:idDos", 
+    component: DetallePComponent, 
+    canActivate: [AuthGuard]
   },
   {
     path:"detalleUser/:id", component: DetalleUserComponent
