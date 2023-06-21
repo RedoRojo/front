@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-detalle-user',
@@ -9,7 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 export class DetalleUserComponent implements OnInit {
   userId: number = 0
   admin: number = 0
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router, 
+    private datosAuthService: AuthService 
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -17,4 +22,9 @@ export class DetalleUserComponent implements OnInit {
     }); 
   }
 
+  async volver() { 
+    const isAdmin = await this.datosAuthService.isAdmin();
+    if( isAdmin ) this.router.navigate(['/admin/users'])
+    else this.router.navigate(['/cuenta'])
+  }
 }

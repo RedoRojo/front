@@ -2,6 +2,7 @@ import { Component, Input, ɵclearResolutionOfComponentResourcesQueue } from '@a
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommentsService } from 'src/app/services/comments-service.service';
 import { PostsService } from 'src/app/services/posts-service.service';
 import { UsersService } from 'src/app/services/users-service.service';
@@ -14,7 +15,13 @@ import { UsersService } from 'src/app/services/users-service.service';
 export class UserFormComponent {
   @Input() userId: any;
 
-  constructor(private datosPostsService: PostsService, private router: Router,private datosCommentsService: CommentsService, private datosUsersService: UsersService) {}
+  constructor(
+    private datosPostsService: PostsService,
+    private router: Router,
+    private datosCommentsService: CommentsService, 
+    private datosUsersService: UsersService,
+    private datosAuthService: AuthService
+  ) {}
 
   postAuxiliar: any;
   formulario: any;
@@ -44,7 +51,8 @@ export class UserFormComponent {
       username: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required), 
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.required),
+      rol: new FormControl('user')
     })
   }
   

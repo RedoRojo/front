@@ -12,6 +12,8 @@ import { AdminUsersComponent } from './paginas/admin-users/admin-users.component
 import { UserFormComponent } from './elementos/user-form/user-form.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { authorizationGuard } from './helpers/authorization.guard';
+import { RegisterComponent } from './paginas/register/register.component';
 
 const routes: Routes = [
   {path:"", component: PostsComponent},
@@ -39,13 +41,20 @@ const routes: Routes = [
     path:"cuenta", component: MyAccountComponent
   }, 
   {
-    path:"admin/posts", component: AdminPostsComponent
+    path:"admin/posts", 
+    component: AdminPostsComponent,
+    canActivate: [authorizationGuard]
   }, 
   {
-    path:"admin/users", component: AdminUsersComponent
+    path:"admin/users", 
+    component: AdminUsersComponent,
+    canActivate: [authorizationGuard]
   },
   {
     path:"login", component: LoginComponent
+  },
+  {
+    path:"register", component: RegisterComponent
   }
 ];
 

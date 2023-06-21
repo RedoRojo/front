@@ -3,9 +3,9 @@
     <li><a [routerLink] = "['/']">Home</a></li>
     <li><a [routerLink] = "['/posts']">Publicaciones</a></li>
     <li><a [routerLink] = "['/misPosts']">Tus Publicaciones</a></li>
-    <li *ngIf = 'this.datosAuthService.isLoggedIn'><a [routerLink] = "['/cuenta']">{{this.datosAuthService.getUsername()}}</a></li>
+    <li *ngIf = 'this.datosAuthService.isLoggedIn()'><a [routerLink] = "['/cuenta']">{{this.datosAuthService.getUsername()}}</a></li>
     <li *ngIf = '!this.datosAuthService.isLoggedIn()'><a [routerLink] = "['/login']">Login</a></li>
-    <li><a [routerLink] = "['/admin/posts']">Admin Posts</a></li>
-    <li><a [routerLink] = "['/admin/users']">Admin Users</a></li>
+    <li *ngIf = "this.isAdmin"><a [routerLink] = "['/admin/posts']">Admin Posts</a></li>
+    <li *ngIf = "this.isAdmin"><a [routerLink] = "['/admin/users']">Admin Users</a></li>
   </ul>
 </nav>
