@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { PostsService } from 'src/app/services/posts-service.service';
 
 @Component({
@@ -20,8 +21,13 @@ export class MisPostsComponent {
   }
 
 
-  constructor( private datosPostsService:PostsService,private router: Router,private route2: ActivatedRoute){
-    this.userId =2; 
+  constructor( 
+    private datosPostsService:PostsService,
+    private router: Router,
+    private route2: ActivatedRoute,
+    private datosAuthService: AuthService
+  ){
+    this.userId = this.datosAuthService.getUserId(); 
   }
   ngOnInit(): void {
   
