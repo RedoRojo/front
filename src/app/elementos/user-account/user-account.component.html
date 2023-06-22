@@ -28,7 +28,7 @@
   </div>
 
 
-  <div class="update-user">
+  <div *ngIf='this.notAdmin' class="update-user">
     <button (click)="updateUser(userData.id)">Actualizar cuenta</button>
   </div>
 

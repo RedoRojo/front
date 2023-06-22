@@ -14,7 +14,7 @@ import { UsersService } from 'src/app/services/users-service.service';
 })
 export class UserFormComponent {
   @Input() userId: any;
-
+  accion: any; 
   constructor(
     private datosPostsService: PostsService,
     private router: Router,
@@ -27,8 +27,10 @@ export class UserFormComponent {
   formulario: any;
 
   ngOnInit(): void {
+    if(this.userId != -1) this.accion = 'Actualizar';
+    else this.accion = 'Crear cuenta';
 
-    if(this.userId !== '-1'){
+    if(this.userId != '-1'){
       this.datosUsersService.obtenerUser(this.userId).subscribe(
         (data) => {
           this.postAuxiliar = data;
@@ -52,15 +54,14 @@ export class UserFormComponent {
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required), 
       password: new FormControl('', Validators.required),
-      rol: new FormControl('user')
+      rol: new FormControl('user', Validators.required)
     })
   }
   
   actualizarUsuario() { 
     console.log(this.userId)
     if (this.formulario.valid) {
-
-      if(this.userId !== '-1'){
+      if(this.userId != '-1'){
         this.datosUsersService.modificarUser(this.userId, this.formulario.value).subscribe((respuesta: any) => {
           console.log(Response); 
           console.log(respuesta);

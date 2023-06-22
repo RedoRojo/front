@@ -1,5 +1,5 @@
 <div *ngFor = "let comment of datosRecuperados" class="comment">
-    <h4>{{comment.fecha}}</h4>
+    <h4>{{comment.fecha | date: 'dd/MM/yyyy'}}</h4>
     <div class="content">
         <p>{{comment.contenido}}</p>
     </div>

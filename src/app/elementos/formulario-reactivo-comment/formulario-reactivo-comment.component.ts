@@ -17,7 +17,8 @@ export class FormularioReactivoCommentComponent {
   commentAuxiliar: any;
   formulario: any;
   
-  constructor(private router: Router,private datosCommentsService: CommentsService,private location: Location) {
+  constructor(private router: Router,private datosCommentsService: CommentsService,
+    private location: Location) {
     
   }
 

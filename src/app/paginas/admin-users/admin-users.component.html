@@ -1,14 +1,15 @@
 <div class="users">
     <h3>USERS</h3>
-    <div class="one-user" *ngFor = "let user of users" [id]="'u' + user.id" [ngClass]="{ 'highlight': user.id == highlightedUserId }">
-        <h4>id: {{user.id}}</h4>
-        <h4>username: {{user.username}}</h4>
-        <button (click) = "modificarUser(user.id)">Modicar</button>
-        <button (click) = "eliminarUser(user.id)">Eliminar</button>
+    <div class="one-user" *ngFor="let user of users" [id]="'u' + user.id" [ngClass]="{ 'highlight': user.id == highlightedUserId }">
+      <h4>id: {{user.id}}</h4>
+      <h4>username: {{user.username}}</h4>
+      <div class="user-buttons">
+        <button (click)="modificarUser(user.id)">Modificar</button>
+        <button (click)="eliminarUser(user.id)">Eliminar</button>
+      </div>
     </div>
-</div>
-
-<div class="create-user">
+  </div>
+  
+  <div class="create-user">
     <button (click)="crearUser()">CREAR USER</button>
-</div>
-
+  </div>
